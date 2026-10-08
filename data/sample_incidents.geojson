@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.71,
+          -33.415
+        ]
+      },
+      "properties": {
+        "incident_id": "INC-COSTANERA-GRIDLOCK",
+        "description": "Multi-vehicle collision blocking 3 lanes on Costanera Norte corridor.",
+        "severity": "CRITICAL_GRIDLOCK",
+        "delay_minutes": 45.0,
+        "h3_index": "88b2c55733fffff"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.68,
+          -33.4
+        ]
+      },
+      "properties": {
+        "incident_id": "INC-QUILICURA-ROADWORK",
+        "description": "Emergency asphalt repair near Autopista Central North entrance.",
+        "severity": "HIGH",
+        "delay_minutes": 30.0,
+        "h3_index": "88b2c5544dfffff"
+      }
+    }
+  ]
+}
