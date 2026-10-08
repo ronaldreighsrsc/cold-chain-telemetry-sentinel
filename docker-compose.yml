@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  # Ultra-lightweight Kafka-compatible event streaming broker (sub-second startup, <350MB RAM)
+  redpanda:
+    image: docker.redpanda.com/redpandadata/redpanda:v24.1.8
+    container_name: sentinel-redpanda
+    command:
+      - redpanda start
+      - --smp 1
+      - --memory 512M
+      - --overprovisioned
+      - --kafka-addr internal://0.0.0.0:9092,external://0.0.0.0:19092
+      - --advertise-kafka-addr internal://redpanda:9092,external://localhost:19092
+    ports:
+      - "19092:19092"
+      - "9644:9644" # Admin API
+
+  # Low-latency in-memory state store for active fleet tracking and H3 spatial sets
+  redis:
+    image: redis:7.2-alpine
+    container_name: sentinel-redis
+    ports:
+      - "6379:6379"
+
+  # Real-Time Geospatial Streamlit Dashboard & Operations Control Tower
+  dashboard:
+    build: .
+    container_name: sentinel-dashboard
+    command: streamlit run cold_chain_telemetry_sentinel/dashboard/app.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    environment:
+      - REDIS_HOST=redis
+      - REDPANDA_BROKER=redpanda:9092
+    depends_on:
+      - redpanda
+      - redis
