@@ -26,9 +26,14 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run Pytest Test Suite
+      env:
+        PYTHONPATH: .
       run: |
         pytest tests/ -v
 
     - name: Execute Throughput Stress Benchmark
+      env:
+        PYTHONPATH: .
       run: |
         python scripts/benchmark_throughput.py
+

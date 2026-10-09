@@ -1,8 +1,8 @@
 {
   "event_count": 5000,
-  "total_time_seconds": 8.186,
-  "throughput_events_per_second": 610.8,
-  "p50_latency_ms": 1.539,
-  "p95_latency_ms": 2.919,
-  "p99_latency_ms": 3.927
+  "total_time_seconds": 6.02,
+  "throughput_events_per_second": 830.6,
+  "p50_latency_ms": 1.19,
+  "p95_latency_ms": 1.895,
+  "p99_latency_ms": 2.583
 }
